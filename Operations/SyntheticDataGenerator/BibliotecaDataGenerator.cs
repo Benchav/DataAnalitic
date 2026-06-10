@@ -423,7 +423,7 @@ namespace Operations.SyntheticDataGenerator
 
             try
             {
-                SqlADOConexion.ABORABORAT(sql);
+                SqlADOConexion.SQLM?.GDatos.TraerDatosSQL(sql);
             }
             catch (Exception ex)
             {
@@ -475,7 +475,7 @@ namespace Operations.SyntheticDataGenerator
 
             try
             {
-                SqlADOConexion.ABORABORAT(createViewSql);
+                SqlADOConexion.SQLM?.GDatos.TraerDatosSQL(createViewSql);
                 Log("✓ Vista V_Analisis_Biblioteca creada exitosamente");
             }
             catch (Exception ex)
