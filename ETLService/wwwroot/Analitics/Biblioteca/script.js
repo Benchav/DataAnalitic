@@ -144,75 +144,67 @@ function generarTarjetasHipotesis(resultados) {
     const styles = `
     <style>
     .hypothesis-card {
-        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-        background: rgba(15, 23, 42, 0.4);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        margin: 2rem auto;
-        max-width: 960px;
+        font-family: 'Inter', -apple-system, sans-serif;
+        background: #0a0a0a;
+        border: 1px solid #222222;
+        border-radius: 8px;
+        margin-top: 1.5rem;
+        width: 100%;
         overflow: hidden;
-        animation: fadeUp 0.6s ease-out forwards;
+        animation: fadeUp 0.5s ease forwards;
     }
     .hc-header {
-        background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
-        padding: 1.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid #222222;
+        background: #111111;
     }
-    .hc-header h2 { margin: 0 0 0.5rem; font-size: 1.35rem; font-weight: 600; color: #f8fafc; display: flex; align-items: center; gap: 0.5rem; }
-    .hc-header p { margin: 0; color: #94a3b8; font-size: 0.95rem; font-weight: 300; }
-    .hc-meta { display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap; }
-    .hc-tag { background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); padding: 0.35rem 0.8rem; border-radius: 20px; font-size: 0.75rem; color: #7dd3fc; font-weight: 500; letter-spacing: 0.5px; }
+    .hc-header h2 { margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 500; color: #ededed; }
+    .hc-header p { margin: 0; color: #a1a1aa; font-size: 0.85rem; font-weight: 400; line-height: 1.5; }
+    .hc-meta { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
+    .hc-tag { background: #222222; border: 1px solid #333333; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; color: #ededed; font-weight: 500; }
     
     .hc-metrics {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: 1.25rem;
-        padding: 1.5rem;
-        background: rgba(5, 11, 20, 0.5);
+        border-bottom: 1px solid #222222;
     }
-    .hc-metric { text-align: center; padding: 1rem; background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; transition: transform 0.3s; }
-    .hc-metric:hover { transform: translateY(-3px); border-color: rgba(56, 189, 248, 0.3); }
-    .hc-metric .lbl { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
-    .hc-metric .val { font-size: 1.3rem; font-weight: 700; color: #f8fafc; margin-top: 0.4rem; text-shadow: 0 0 15px rgba(255,255,255,0.1); }
+    .hc-metric { padding: 1.25rem 1.5rem; border-right: 1px solid #222222; }
+    .hc-metric:last-child { border-right: none; }
+    .hc-metric .lbl { font-size: 0.7rem; color: #a1a1aa; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-bottom: 0.5rem; }
+    .hc-metric .val { font-size: 1.25rem; font-weight: 500; color: #ededed; letter-spacing: -0.02em; }
     
     .hc-decision {
-        margin: 0.5rem 1.5rem 1.5rem;
-        padding: 1.25rem;
-        border-left: 4px solid #38bdf8;
-        background: linear-gradient(90deg, rgba(56, 189, 248, 0.1) 0%, transparent 100%);
-        border-radius: 0 8px 8px 0;
+        margin: 1.5rem;
+        padding: 1rem 1.25rem;
+        border-left: 3px solid #3b82f6;
+        background: #111111;
+        border-radius: 0 6px 6px 0;
     }
-    .hc-decision.hc-ok { border-left-color: #34d399; background: linear-gradient(90deg, rgba(52, 211, 153, 0.1) 0%, transparent 100%); }
-    .hc-decision.hc-warn { border-left-color: #fbbf24; background: linear-gradient(90deg, rgba(251, 191, 36, 0.1) 0%, transparent 100%); }
-    .hc-decision h3 { margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 600; color: #f8fafc; }
-    .hc-decision p { margin: 0; line-height: 1.6; color: #cbd5e1; font-size: 0.95rem; }
+    .hc-decision.hc-ok { border-left-color: #10b981; }
+    .hc-decision.hc-warn { border-left-color: #f59e0b; }
+    .hc-decision h3 { margin: 0 0 0.25rem; font-size: 0.95rem; font-weight: 500; color: #ededed; }
+    .hc-decision p { margin: 0; line-height: 1.5; color: #a1a1aa; font-size: 0.85rem; }
 
     .hc-section { padding: 0 1.5rem 1.5rem; }
-    .hc-section h3 { margin: 0 0 1rem; font-size: 1.1rem; font-weight: 600; color: #f8fafc; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
+    .hc-section h3 { margin: 0 0 1rem; font-size: 0.95rem; font-weight: 500; color: #ededed; padding-bottom: 0.5rem; }
     
-    .hc-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.9rem; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
-    .hc-table th, .hc-table td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .hc-table th { background: rgba(15, 23, 42, 0.8); font-weight: 600; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; }
-    .hc-table td { color: #e2e8f0; background: rgba(30, 41, 59, 0.2); }
-    .hc-table tr:last-child td { border-bottom: none; }
-    .hc-table tr:hover td { background: rgba(56, 189, 248, 0.05); }
+    .hc-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .hc-table th, .hc-table td { padding: 0.75rem 0; text-align: left; border-bottom: 1px solid #222222; }
+    .hc-table th { font-weight: 500; color: #a1a1aa; }
+    .hc-table td { color: #ededed; }
     
-    .hc-recs ul { padding-left: 1.5rem; margin: 0; }
-    .hc-recs li { margin: 0.6rem 0; line-height: 1.6; color: #cbd5e1; position: relative; }
-    .hc-recs li::marker { color: #38bdf8; }
+    .hc-recs ul { padding-left: 1.25rem; margin: 0; }
+    .hc-recs li { margin: 0.5rem 0; line-height: 1.5; color: #a1a1aa; font-size: 0.85rem; }
+    .hc-recs li::marker { color: #333333; }
     
     .hc-footer {
-        background: rgba(15, 23, 42, 0.9);
-        padding: 1.25rem 1.5rem;
-        font-size: 0.85rem;
-        color: #64748b;
-        border-top: 1px solid rgba(255,255,255,0.05);
-        word-break: break-word;
+        background: #111111;
+        padding: 1rem 1.5rem;
+        font-size: 0.8rem;
+        color: #71717a;
+        border-top: 1px solid #222222;
     }
-    .hc-footer strong { color: #94a3b8; }
+    .hc-footer strong { color: #a1a1aa; font-weight: 500; }
     </style>`;
 
     let html = styles;
@@ -248,7 +240,13 @@ function generarTarjetasHipotesis(resultados) {
         catHtml += '</tbody></table>';
 
         // Recomendaciones
-        const recsList = (res.Recomendaciones || []).map(r => `<li>${r}</li>`).join('') || '<li>Sin recomendaciones generadas.</li>';
+        let recsList = '<li>Sin recomendaciones generadas.</li>';
+        if (Array.isArray(res.Recomendaciones) && res.Recomendaciones.length > 0) {
+            recsList = '';
+            for (let j = 0; j < res.Recomendaciones.length; j++) {
+                recsList += '<li>' + res.Recomendaciones[j] + '</li>';
+            }
+        }
 
         // Configuración usada
         const cfg = res.Config_Usada || {};
