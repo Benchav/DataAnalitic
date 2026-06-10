@@ -54,6 +54,9 @@ namespace Operations.SyntheticDataGenerator
                 Seed = 42
             };
 
+            // Asegurar que las tablas físicas existan antes de hacer cualquier consulta a través de AppCore
+            await CrearTablasSiNoExistenAsync();
+
             // RESTRICCIÓN CRÍTICA: Validación de control anti-duplicación
             Etl_Config? registroExistente = null;
             try 
@@ -102,6 +105,84 @@ namespace Operations.SyntheticDataGenerator
             await ValidarConsistenciaAsync();
 
             Log("=== GENERACIÓN BIBLIOTECA COMPLETADA ===");
+        }
+
+        // ====================================================================
+        // CREACIÓN DE ESQUEMA DE TABLAS
+        // ====================================================================
+        private static async Task CrearTablasSiNoExistenAsync()
+        {
+            Console.WriteLine("Verificando/Creando esquema de tablas...");
+            var sql = @"
+            IF OBJECT_ID('dbo.Etl_Config', 'U') IS NULL
+            CREATE TABLE dbo.Etl_Config (
+                BeginDate DATETIME, EndDate DATETIME, Update_At DATETIME
+            );
+
+            IF OBJECT_ID('dbo.Dim_NivelEducativo', 'U') IS NULL
+            CREATE TABLE dbo.Dim_NivelEducativo (
+                Id_NivelEducativo INT IDENTITY(1,1) PRIMARY KEY,
+                Codigo_Nivel VARCHAR(10), Nombre_Nivel VARCHAR(100), Descripcion VARCHAR(255),
+                Orden_Academico INT, Activo BIT, Fecha_Carga DATETIME
+            );
+
+            IF OBJECT_ID('dbo.Dim_Categoria', 'U') IS NULL
+            CREATE TABLE dbo.Dim_Categoria (
+                Id_Categoria INT IDENTITY(1,1) PRIMARY KEY,
+                Codigo_Categoria VARCHAR(10), Nombre_Categoria VARCHAR(100), Descripcion VARCHAR(255),
+                Grupo_Tematico VARCHAR(100), Activo BIT, Fecha_Carga DATETIME
+            );
+
+            IF OBJECT_ID('dbo.Dim_PublicoObjetivo', 'U') IS NULL
+            CREATE TABLE dbo.Dim_PublicoObjetivo (
+                Id_PublicoObjetivo INT IDENTITY(1,1) PRIMARY KEY,
+                Codigo_Publico VARCHAR(10), Nombre_Publico VARCHAR(100), Descripcion VARCHAR(255),
+                Activo BIT, Fecha_Carga DATETIME
+            );
+
+            IF OBJECT_ID('dbo.Dim_Asignatura', 'U') IS NULL
+            CREATE TABLE dbo.Dim_Asignatura (
+                Id_Asignatura INT IDENTITY(1,1) PRIMARY KEY,
+                Codigo_Asignatura VARCHAR(20), Nombre_Asignatura VARCHAR(100), Tipo_Asignatura VARCHAR(50),
+                Id_NivelEducativo INT, Activo BIT, Fecha_Carga DATETIME
+            );
+
+            IF OBJECT_ID('dbo.Dim_Tiempo_Biblioteca', 'U') IS NULL
+            CREATE TABLE dbo.Dim_Tiempo_Biblioteca (
+                Id_Tiempo INT IDENTITY(1,1) PRIMARY KEY,
+                Fecha DATE, Dia_Mes INT, Dia_Semana INT, Nombre_Dia VARCHAR(20),
+                Mes INT, Nombre_Mes VARCHAR(20), Trimestre INT, Semestre INT, Anio INT,
+                Semana_Anio INT, Es_Fin_Semana BIT, Es_Festivo BIT, Es_Inicio_Mes BIT, Es_Fin_Mes BIT,
+                Fecha_Carga DATETIME
+            );
+
+            IF OBJECT_ID('dbo.Fact_RecursoEducativo', 'U') IS NULL
+            CREATE TABLE dbo.Fact_RecursoEducativo (
+                Id_Recurso BIGINT IDENTITY(1,1) PRIMARY KEY,
+                Titulo_Recurso VARCHAR(255), Id_NivelEducativo INT, Id_Categoria INT,
+                Id_PublicoObjetivo INT, Id_Asignatura INT, Id_Tiempo INT,
+                Anio_Publicacion INT, Espacios_Lectura INT, Tipo_Recurso VARCHAR(50),
+                Formato VARCHAR(20), Numero_Paginas INT, Activo BIT, Fecha_Carga DATETIME
+            );
+
+            IF OBJECT_ID('dbo.ErrorLog', 'U') IS NULL
+            CREATE TABLE dbo.ErrorLog (
+                Id_ErrorLog INT IDENTITY(1,1) PRIMARY KEY,
+                Message VARCHAR(MAX), StackTrace VARCHAR(MAX), Date DATETIME
+            );
+
+            -- Fake select to prevent AppCore's TraerDatosSQL from failing because ObjDS.Tables[0] requires at least one table.
+            SELECT 1 AS Status;
+            ";
+
+            try
+            {
+                SqlADOConexion.SQLM?.GDatos.TraerDatosSQL(sql);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️ Error verificando esquema: {ex.Message}");
+            }
         }
 
         // ====================================================================
@@ -433,7 +514,8 @@ namespace Operations.SyntheticDataGenerator
 
             var sql = @"
             IF OBJECT_ID('dbo.V_Analisis_Biblioteca', 'V') IS NOT NULL
-                DROP VIEW dbo.V_Analisis_Biblioteca;
+                EXEC('DROP VIEW dbo.V_Analisis_Biblioteca');
+            SELECT 1 AS Status;
             ";
 
             try
@@ -446,6 +528,7 @@ namespace Operations.SyntheticDataGenerator
             }
 
             var createViewSql = @"
+            EXEC('
             CREATE VIEW dbo.V_Analisis_Biblioteca AS
             SELECT 
                 f.Id_Recurso,
@@ -486,6 +569,8 @@ namespace Operations.SyntheticDataGenerator
             INNER JOIN Dim_Asignatura a ON f.Id_Asignatura = a.Id_Asignatura
             INNER JOIN Dim_Tiempo_Biblioteca t ON f.Id_Tiempo = t.Id_Tiempo
             WHERE f.Activo = 1;
+            ');
+            SELECT 1 AS Status;
             ";
 
             try
