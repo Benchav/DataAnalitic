@@ -55,10 +55,20 @@ namespace Operations.SyntheticDataGenerator
             };
 
             // RESTRICCIÓN CRÍTICA: Validación de control anti-duplicación
-            var registroExistente = new Etl_Config().Find<Etl_Config>(
-                FilterData.Equal("BeginDate", startDate),
-                FilterData.Equal("EndDate", endDate)
-            );
+            Etl_Config? registroExistente = null;
+            try 
+            {
+                registroExistente = new Etl_Config().Find<Etl_Config>(
+                    FilterData.Equal("BeginDate", startDate),
+                    FilterData.Equal("EndDate", endDate)
+                );
+            } 
+            catch (Exception) 
+            {
+                // Si la tabla no existe (primera ejecución), AppCore lanza excepción en Find.
+                // Lo capturamos y dejamos registroExistente como null para proceder.
+                registroExistente = null;
+            }
 
             if (registroExistente == null)
             {
