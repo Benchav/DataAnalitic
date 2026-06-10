@@ -1,5 +1,5 @@
 # Plan de Integración Definitivo: Proyecto Biblioteca Digital MINED
-*(Revisión de Arquitectura Senior con Ubicación Exacta de Archivos)*
+*(Revisión de Arquitectura Senior con Ubicación Exacta de Archivos y Candados Técnicos)*
 
 ## 1. Visión General de la Integración
 Este plan detalla la implementación exacta para la "Biblioteca Digital del MINED". La clave del éxito reside en que el módulo de UI (HTML/JS) depende fuertemente del objeto `hipotesisTestResults` generado por `HipotesisTestService.EjecutarPruebaAsync`. Todo estará parametrizado con `HipotesisTestConfig`.
@@ -14,6 +14,7 @@ Este plan detalla la implementación exacta para la "Biblioteca Digital del MINE
 - **Generación de Entorno de Pruebas y Seed:**
   - 📍 **Archivo a Modificar:** `Operations/SyntheticDataGenerator/SyntheticDataGeneratorOperation.cs`
   - *Cambio:* Ejecutar creación de esquema (`Dim_NivelEducativo`, `Dim_Categoria`, `Dim_PublicoObjetivo`, `Dim_Asignatura`, `Dim_Tiempo` y `Fact_RecursosEducativos`) y la vista desnormalizada obligatoria `V_Analisis_Biblioteca`. Llenar con datos sintéticos randomizados.
+  - **RESTRICCIÓN CRÍTICA:** Es obligatorio conservar la consulta de validación a la tabla de control mediante `new Etl_Config().Find<Etl_Config>(FilterData.Equal("BeginDate", startDate), ...)` dentro del método `Start()`. Esto es imperativo para evitar duplicación masiva de registros en las tablas de hechos al reiniciar el entorno.
 
 - **Modelo de Entidad (C#):**
   - 📍 **Archivo a Crear:** `Operations/AnaliticOperations/Model/V_Analisis_Biblioteca.cs`
@@ -21,6 +22,11 @@ Este plan detalla la implementación exacta para la "Biblioteca Digital del MINE
 
 ## 3. KPIs y Lógica de Hipótesis (EstadisticModule)
 📍 **Ubicación de los archivos lógicos:** `Operations/AnaliticOperations/`
+
+**Reglas de Implementación en Clases Operation:**
+*Cambio:* Todas las operaciones detalladas en la tabla inferior deben cumplir con dos patrones estrictos:
+1. Declarar al inicio de la clase el diccionario estático de tipado `ModelObject` mapeando las variables cuantitativas (ej. `["Anio_Publicacion"] = new ModelProperty { Type = "NUMBER" }`).
+2. La consulta base hacia la base de datos debe ser obligatoriamente materializada invocando el método `.Where<V_Analisis_Biblioteca>(...)` aplicando los filtros del `DataAnaliticRequest` recibidos, antes de delegar la ejecución estadística a los helpers.
 
 Se crearán los siguientes 5 archivos, cada uno configurando `HipotesisTestConfig<V_Analisis_Biblioteca>`:
 
@@ -44,6 +50,7 @@ Se crearán los siguientes 5 archivos, cada uno configurando `HipotesisTestConfi
   
 - 📍 **Archivo a Crear:** `ETLService/wwwroot/Biblioteca/script.js`
   - *Cambio:* Llamadas a la API vía `WAjaxTools.PostRequest`, dibujado de los componentes de gráficos (barras, líneas) y llamado obligatorio a `generarTarjetasHipotesis(response.hipotesisTestResults)` para cada gráfico.
+  - **ADICIÓN DE COMPONENTES WDevCore:** Se exige la integración de componentes visuales `WFilterControls`. La vista no debe ser estática; debe permitir interactuar con los parámetros del request para segmentar las pruebas de hipótesis en tiempo real directamente desde el navegador.
 
 ## 6. Secuencia de Ejecución
 1. Modificar `BDConnection.cs`.

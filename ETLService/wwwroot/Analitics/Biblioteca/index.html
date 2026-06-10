@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINED Analytics | Cobertura Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script type="module" src="script.js"></script>
+    <style>
+        :root {
+            --bg-base: #000000;
+            --bg-surface: #0a0a0a;
+            --bg-panel: #111111;
+            --border-subtle: #222222;
+            --border-hover: #333333;
+            --text-primary: #ededed;
+            --text-secondary: #a1a1aa;
+            --accent-brand: #3b82f6;
+            --accent-hover: #60a5fa;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Navigation Bar */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--text-primary);
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            color: var(--bg-base);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .nav-links span.active {
+            color: var(--text-primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 3rem 2rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Controls / Filters */
+        .controls-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 0.75rem 1.5rem;
+            margin: 0 auto 3rem;
+            max-width: 1400px;
+            width: calc(100% - 4rem);
+        }
+
+        .filters {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .filter-item label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .filter-item input {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .filter-item input::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--bg-base);
+            border: none;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-primary:hover {
+            background: #ffffff;
+            transform: scale(1.02);
+        }
+
+        /* Dashboard Grid */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        /* Cards */
+        .kpi-section {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .kpi-section:hover {
+            border-color: var(--border-hover);
+        }
+
+        .kpi-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+        }
+
+        .kpi-sidebar {
+            padding: 2rem;
+            border-right: 1px solid var(--border-subtle);
+            background: var(--bg-panel);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .kpi-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .kpi-hypothesis {
+            margin-top: auto;
+        }
+
+        .kpi-hypothesis h4 {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .kpi-hypothesis p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .kpi-content {
+            padding: 2rem;
+            min-height: 400px;
+            position: relative;
+        }
+
+        /* Loading */
+        .loading {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            background: var(--bg-surface);
+            z-index: 10;
+        }
+
+        .dot-flashing {
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: var(--accent-brand);
+            animation: dot-flashing 1s infinite linear alternate;
+            animation-delay: 0.5s;
+            position: relative;
+        }
+        .dot-flashing::before, .dot-flashing::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: var(--accent-brand);
+            animation: dot-flashing 1s infinite alternate;
+        }
+        .dot-flashing::before { left: -12px; animation-delay: 0s; }
+        .dot-flashing::after { left: 12px; animation-delay: 1s; }
+
+        @keyframes dot-flashing {
+            0% { opacity: 1; }
+            50%, 100% { opacity: 0.2; }
+        }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .kpi-layout {
+                grid-template-columns: 1fr;
+            }
+            .kpi-sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-subtle);
+            }
+            .controls-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="brand">
+            <div class="brand-icon">M</div>
+            MINED Analytics
+        </div>
+        <div class="nav-links">
+            <span class="active">Cobertura Digital</span>
+            <span>Estadísticas Globales</span>
+            <span>Reportes</span>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+        <h1>Dashboard Analítico</h1>
+        <p>Análisis estadístico de la distribución y vigencia de los recursos de la Biblioteca Digital.</p>
+    </header>
+
+    <!-- Controls -->
+    <section class="controls-bar" id="filtersSection">
+        <div class="filters">
+            <div class="filter-item">
+                <label>Desde</label>
+                <input type="date" id="filterDesde" value="2015-01-01">
+            </div>
+            <div class="filter-item" style="color: var(--border-hover);">/</div>
+            <div class="filter-item">
+                <label>Hasta</label>
+                <input type="date" id="filterHasta" value="2027-12-31">
+            </div>
+        </div>
+        <button class="btn-primary" id="btnAplicar">Aplicar Parámetros</button>
+    </section>
+
+    <!-- Dashboard Content -->
+    <main>
+        <!-- KPI 1 -->
+        <section class="kpi-section" id="kpi1Section">
+            <div class="kpi-layout">
+                <aside class="kpi-sidebar">
+                    <h2 class="kpi-title">Actualización por Nivel Educativo</h2>
+                    <div class="kpi-hypothesis">
+                        <h4>Hipótesis (H1)</h4>
+                        <p>Los recursos orientados a niveles técnicos o secundarios presentan una menor tasa de actualización en comparación con educación primaria.</p>
+                    </div>
+                </aside>
+                <div class="kpi-content">
+                    <div class="chart-wrapper" id="chart-kpi1">
+                        <div class="loading"><div class="dot-flashing"></div></div>
+                    </div>
+                    <div class="hipotesis-container" id="hipotesis-kpi1"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI 2 -->
+        <section class="kpi-section" id="kpi2Section">
+            <div class="kpi-layout">
+                <aside class="kpi-sidebar">
+                    <h2 class="kpi-title">Espacios de Lectura</h2>
+                    <div class="kpi-hypothesis">
+                        <h4>Hipótesis (H3)</h4>
+                        <p>La cantidad de espacios de lectura de los recursos varía significativamente según el nivel educativo.</p>
+                    </div>
+                </aside>
+                <div class="kpi-content">
+                    <div class="chart-wrapper" id="chart-kpi2">
+                        <div class="loading"><div class="dot-flashing"></div></div>
+                    </div>
+                    <div class="hipotesis-container" id="hipotesis-kpi2"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI 3 -->
+        <section class="kpi-section" id="kpi3Section">
+            <div class="kpi-layout">
+                <aside class="kpi-sidebar">
+                    <h2 class="kpi-title">Cobertura Temática</h2>
+                    <div class="kpi-hypothesis">
+                        <h4>Hipótesis (H5)</h4>
+                        <p>Identificación de áreas temáticas (categorías) con baja cobertura documental dentro de la biblioteca digital.</p>
+                    </div>
+                </aside>
+                <div class="kpi-content">
+                    <div class="chart-wrapper" id="chart-kpi3">
+                        <div class="loading"><div class="dot-flashing"></div></div>
+                    </div>
+                    <div class="hipotesis-container" id="hipotesis-kpi3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI 4 -->
+        <section class="kpi-section" id="kpi4Section">
+            <div class="kpi-layout">
+                <aside class="kpi-sidebar">
+                    <h2 class="kpi-title">Público Objetivo</h2>
+                    <div class="kpi-hypothesis">
+                        <h4>Hipótesis (H6)</h4>
+                        <p>Los recursos dirigidos a docentes presentan menor disponibilidad que los orientados a estudiantes.</p>
+                    </div>
+                </aside>
+                <div class="kpi-content">
+                    <div class="chart-wrapper" id="chart-kpi4">
+                        <div class="loading"><div class="dot-flashing"></div></div>
+                    </div>
+                    <div class="hipotesis-container" id="hipotesis-kpi4"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI 5 -->
+        <section class="kpi-section" id="kpi5Section">
+            <div class="kpi-layout">
+                <aside class="kpi-sidebar">
+                    <h2 class="kpi-title">Cobertura por Asignatura</h2>
+                    <div class="kpi-hypothesis">
+                        <h4>Objetivo</h4>
+                        <p>Comparar la cobertura documental entre asignaturas principales y complementarias para detectar brechas.</p>
+                    </div>
+                </aside>
+                <div class="kpi-content">
+                    <div class="chart-wrapper" id="chart-kpi5">
+                        <div class="loading"><div class="dot-flashing"></div></div>
+                    </div>
+                    <div class="hipotesis-container" id="hipotesis-kpi5"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
