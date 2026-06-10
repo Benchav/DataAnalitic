@@ -1,7 +1,6 @@
-﻿using APPCORE;
+using APPCORE;
 using BusinessLogic.Connection;
 using Operations.SyntheticDataGenerator;
-using Operations.SyntheticDataGenerator.Model;
 
 namespace Operations;
 
@@ -13,12 +12,8 @@ public class StartServices
         {
             Console.Write("############### BEGINNN");
             new BDConnection().InitMainConnection();
-            /*new CategoryOperation().Excute();
-            new TimeOperation().Excute();
-            
-            DateOLAPOperation.UpdateLastUpdateDate(DateTime.Now);*/
           
-            await SyntheticDataGeneratorOperation.Start();
+            await BibliotecaDataGeneratorOperation.Start();
             Console.Write("############### END");
             return true;
         }
@@ -30,3 +25,4 @@ public class StartServices
     }
 
 }
+
