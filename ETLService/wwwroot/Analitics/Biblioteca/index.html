@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Digital MINED - Dashboard Analítico</title>
+    <script type="module" src="script.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+        .dashboard-header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 2rem;
+            border-bottom: 1px solid #334155;
+            text-align: center;
+        }
+        .dashboard-header h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .dashboard-header p {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        /* Filtros */
+        .filters-container {
+            background: #1e293b;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #334155;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .filter-group label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .filter-group input, .filter-group select {
+            background: #0f172a;
+            border: 1px solid #475569;
+            color: #e2e8f0;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        .filter-group input:focus, .filter-group select:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+        }
+        .btn-aplicar {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            color: #0f172a;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            align-self: flex-end;
+        }
+        .btn-aplicar:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        /* KPI Sections */
+        .kpi-section {
+            padding: 2rem;
+            border-bottom: 1px solid #1e293b;
+        }
+        .kpi-section:nth-child(even) {
+            background: #0c1322;
+        }
+        .kpi-title {
+            font-size: 1.4rem;
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+        }
+        .kpi-hypothesis {
+            background: #1e293b;
+            border-left: 4px solid #818cf8;
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.5rem;
+        }
+        .kpi-hypothesis h4 {
+            color: #818cf8;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .kpi-hypothesis blockquote {
+            color: #cbd5e1;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .chart-container {
+            min-height: 300px;
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .hipotesis-container {
+            margin-top: 1rem;
+        }
+
+        /* Loading state */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: #64748b;
+        }
+        .loading::after {
+            content: "Cargando datos...";
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="dashboard-header">
+        <h1>📚 Biblioteca Digital del MINED</h1>
+        <p>Dashboard Analítico de Cobertura y Distribución de Recursos Educativos</p>
+    </header>
+
+    <!-- Filtros Interactivos -->
+    <section class="filters-container" id="filtersSection">
+        <div class="filter-group">
+            <label>Fecha Desde</label>
+            <input type="date" id="filterDesde" value="2015-01-01">
+        </div>
+        <div class="filter-group">
+            <label>Fecha Hasta</label>
+            <input type="date" id="filterHasta" value="2027-12-31">
+        </div>
+        <button class="btn-aplicar" id="btnAplicar">🔄 Aplicar Filtros</button>
+    </section>
+
+    <main>
+        <!-- KPI 1: H1 - Actualización por Nivel Educativo -->
+        <section class="kpi-section" id="kpi1Section">
+            <h2 class="kpi-title">KPI 1: Actualización por Nivel Educativo</h2>
+            <div class="kpi-hypothesis">
+                <h4>H1: Tasa de Actualización por Nivel</h4>
+                <blockquote>Los recursos educativos orientados a niveles de educación técnica o secundaria presentan
+                    una menor tasa de actualización (años de publicación recientes) en comparación con los niveles
+                    de educación primaria.</blockquote>
+            </div>
+            <div class="chart-container" id="chart-kpi1"><div class="loading"></div></div>
+            <div class="hipotesis-container" id="hipotesis-kpi1"></div>
+        </section>
+
+        <!-- KPI 2: H3 - Espacios de Lectura -->
+        <section class="kpi-section" id="kpi2Section">
+            <h2 class="kpi-title">KPI 2: Espacios de Lectura por Nivel Educativo</h2>
+            <div class="kpi-hypothesis">
+                <h4>H3: Distribución de Espacios de Lectura</h4>
+                <blockquote>La cantidad de espacios de lectura de los recursos varía significativamente
+                    según el nivel educativo.</blockquote>
+            </div>
+            <div class="chart-container" id="chart-kpi2"><div class="loading"></div></div>
+            <div class="hipotesis-container" id="hipotesis-kpi2"></div>
+        </section>
+
+        <!-- KPI 3: H5 - Cobertura Temática -->
+        <section class="kpi-section" id="kpi3Section">
+            <h2 class="kpi-title">KPI 3: Cobertura Temática por Categoría</h2>
+            <div class="kpi-hypothesis">
+                <h4>H5: Áreas Temáticas con Baja Cobertura</h4>
+                <blockquote>La clasificación estructurada de los recursos permite identificar áreas temáticas
+                    con baja cobertura documental dentro de la biblioteca digital.</blockquote>
+            </div>
+            <div class="chart-container" id="chart-kpi3"><div class="loading"></div></div>
+            <div class="hipotesis-container" id="hipotesis-kpi3"></div>
+        </section>
+
+        <!-- KPI 4: H6 - Público Objetivo -->
+        <section class="kpi-section" id="kpi4Section">
+            <h2 class="kpi-title">KPI 4: Disponibilidad por Público Objetivo</h2>
+            <div class="kpi-hypothesis">
+                <h4>H6: Docentes vs Estudiantes</h4>
+                <blockquote>Los recursos dirigidos a docentes presentan menor disponibilidad que los orientados
+                    a estudiantes en la Biblioteca Digital del MINED.</blockquote>
+            </div>
+            <div class="chart-container" id="chart-kpi4"><div class="loading"></div></div>
+            <div class="hipotesis-container" id="hipotesis-kpi4"></div>
+        </section>
+
+        <!-- KPI 5: Cobertura por Asignaturas -->
+        <section class="kpi-section" id="kpi5Section">
+            <h2 class="kpi-title">KPI 5: Cobertura Documental por Asignaturas</h2>
+            <div class="kpi-hypothesis">
+                <h4>Objetivo: Asignaturas Principales vs Complementarias</h4>
+                <blockquote>Comparar la cobertura documental entre asignaturas principales y complementarias
+                    para detectar brechas en la disponibilidad de recursos educativos.</blockquote>
+            </div>
+            <div class="chart-container" id="chart-kpi5"><div class="loading"></div></div>
+            <div class="hipotesis-container" id="hipotesis-kpi5"></div>
+        </section>
+    </main>
+</body>
+
+</html>
