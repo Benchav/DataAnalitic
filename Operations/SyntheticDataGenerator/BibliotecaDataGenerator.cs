@@ -110,28 +110,28 @@ namespace Operations.SyntheticDataGenerator
         private async Task CargarDimensionesAsync()
         {
             // Verificar si ya existen dimensiones, si no, crearlas
-            _niveles = new Dim_NivelEducativo().SimpleGet<Dim_NivelEducativo>();
+            try { _niveles = new Dim_NivelEducativo().SimpleGet<Dim_NivelEducativo>(); } catch { _niveles = null; }
             if (_niveles == null || _niveles.Count == 0)
             {
                 await SembrarNivelesEducativos();
                 _niveles = new Dim_NivelEducativo().SimpleGet<Dim_NivelEducativo>();
             }
 
-            _categorias = new Dim_Categoria().SimpleGet<Dim_Categoria>();
+            try { _categorias = new Dim_Categoria().SimpleGet<Dim_Categoria>(); } catch { _categorias = null; }
             if (_categorias == null || _categorias.Count == 0)
             {
                 await SembrarCategorias();
                 _categorias = new Dim_Categoria().SimpleGet<Dim_Categoria>();
             }
 
-            _publicos = new Dim_PublicoObjetivo().SimpleGet<Dim_PublicoObjetivo>();
+            try { _publicos = new Dim_PublicoObjetivo().SimpleGet<Dim_PublicoObjetivo>(); } catch { _publicos = null; }
             if (_publicos == null || _publicos.Count == 0)
             {
                 await SembrarPublicosObjetivo();
                 _publicos = new Dim_PublicoObjetivo().SimpleGet<Dim_PublicoObjetivo>();
             }
 
-            _asignaturas = new Dim_Asignatura().SimpleGet<Dim_Asignatura>();
+            try { _asignaturas = new Dim_Asignatura().SimpleGet<Dim_Asignatura>(); } catch { _asignaturas = null; }
             if (_asignaturas == null || _asignaturas.Count == 0)
             {
                 await SembrarAsignaturas();
@@ -275,9 +275,14 @@ namespace Operations.SyntheticDataGenerator
         // ====================================================================
         private async Task<int> ObtenerOCrearFechaAsync(DateTime fecha)
         {
-            var fechaExistente = new Dim_Tiempo_Biblioteca().Find<Dim_Tiempo_Biblioteca>(
-                FilterData.Equal("Fecha", fecha.Date)
-            );
+            Dim_Tiempo_Biblioteca? fechaExistente = null;
+            try 
+            {
+                fechaExistente = new Dim_Tiempo_Biblioteca().Find<Dim_Tiempo_Biblioteca>(
+                    FilterData.Equal("Fecha", fecha.Date)
+                );
+            } 
+            catch { }
 
             if (fechaExistente?.Id_Tiempo.HasValue == true)
             {
