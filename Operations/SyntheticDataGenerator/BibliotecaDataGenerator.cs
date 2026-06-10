@@ -16,7 +16,7 @@ namespace Operations.SyntheticDataGenerator
     {
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
-        public int TotalRecursos { get; set; } = 2000;
+        public int TotalRecursos { get; set; } = 15000;
         public int Seed { get; set; } = 42;
     }
 
@@ -50,7 +50,7 @@ namespace Operations.SyntheticDataGenerator
             {
                 FechaInicio = startDate,
                 FechaFin = endDate,
-                TotalRecursos = 2000,
+                TotalRecursos = 15000,
                 Seed = 42
             };
 

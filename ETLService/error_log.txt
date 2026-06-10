@@ -1380,3 +1380,195 @@ Login failed for user 'sa'.
    at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
    at APPCORE.GDatosAbstract.TraerDatosSQL(String queryString, IDbConnection dbConnection, IDbTransaction dbTransaction, List`1 parameters) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 286
    at APPCORE.BDCore.Abstracts.WDataMapper.TakeObject[T](EntityClass Inst, String CondSQL, Boolean isSimpleFind) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\DataMapper.cs:line 466
+[10/6/2026 14:07:53] ERROR: Max retries reached. Operation failed.: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+[10/6/2026 14:07:53] Transaction failed and connection restarted.: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+[10/6/2026 14:07:53] Transaction failed and connection restarted.: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+   at APPCORE.GDatosAbstract.TraerDatosSQL(String queryString, IDbConnection dbConnection, IDbTransaction dbTransaction, List`1 parameters) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 286
+   at APPCORE.BDCore.Abstracts.WDataMapper.TakeObject[T](EntityClass Inst, String CondSQL, Boolean isSimpleFind) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\DataMapper.cs:line 466
+[10/6/2026 14:07:53] ERROR: TakeList - Etl_Config - SELECT  top 1 Update_At,BeginDate,EndDate FROM dbo.Etl_Config as AHK_L_F_U   WHERE  BeginDate  =  @BeginDate_1  AND  EndDate  =  @EndDate_2    ORDER BY Id DESC: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+   at APPCORE.GDatosAbstract.TraerDatosSQL(String queryString, IDbConnection dbConnection, IDbTransaction dbTransaction, List`1 parameters) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 286
+   at APPCORE.BDCore.Abstracts.WDataMapper.TakeObject[T](EntityClass Inst, String CondSQL, Boolean isSimpleFind) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\DataMapper.cs:line 466
+[10/6/2026 14:10:33] ERROR: Max retries reached. Operation failed.: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+[10/6/2026 14:10:33] Transaction failed and connection restarted.: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+[10/6/2026 14:10:33] Transaction failed and connection restarted.: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+   at APPCORE.GDatosAbstract.TraerDatosSQL(String queryString, IDbConnection dbConnection, IDbTransaction dbTransaction, List`1 parameters) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 286
+   at APPCORE.BDCore.Abstracts.WDataMapper.TakeObject[T](EntityClass Inst, String CondSQL, Boolean isSimpleFind) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\DataMapper.cs:line 466
+[10/6/2026 14:10:33] ERROR: TakeList - Etl_Config - SELECT  top 1 Update_At,BeginDate,EndDate FROM dbo.Etl_Config as OLG_E_B_H   WHERE  BeginDate  =  @BeginDate_1  AND  EndDate  =  @EndDate_2    ORDER BY Id DESC: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+   at APPCORE.GDatosAbstract.TraerDatosSQL(String queryString, IDbConnection dbConnection, IDbTransaction dbTransaction, List`1 parameters) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 286
+   at APPCORE.BDCore.Abstracts.WDataMapper.TakeObject[T](EntityClass Inst, String CondSQL, Boolean isSimpleFind) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\DataMapper.cs:line 466
+[10/6/2026 14:11:59] ERROR: Max retries reached. Operation failed.: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+[10/6/2026 14:11:59] Transaction failed and connection restarted.: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+[10/6/2026 14:11:59] Transaction failed and connection restarted.: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+   at APPCORE.GDatosAbstract.TraerDatosSQL(String queryString, IDbConnection dbConnection, IDbTransaction dbTransaction, List`1 parameters) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 286
+   at APPCORE.BDCore.Abstracts.WDataMapper.TakeObject[T](EntityClass Inst, String CondSQL, Boolean isSimpleFind) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\DataMapper.cs:line 466
+[10/6/2026 14:11:59] ERROR: TakeList - Etl_Config - SELECT  top 1 Update_At,BeginDate,EndDate FROM dbo.Etl_Config as REU_J_V_G   WHERE  BeginDate  =  @BeginDate_1  AND  EndDate  =  @EndDate_2    ORDER BY Id DESC: Invalid column name 'Id'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at APPCORE.GDatosAbstract.<>c__DisplayClass35_0.<TraerDatosSQL>b__0() in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 294
+   at APPCORE.GDatosAbstract.ExecuteWithRetry(Func`1 operation, Int32 maxRetries) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 242
+   at APPCORE.GDatosAbstract.TraerDatosSQL(String queryString, IDbConnection dbConnection, IDbTransaction dbTransaction, List`1 parameters) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\Abstracts\GDatosAbstract.cs:line 286
+   at APPCORE.BDCore.Abstracts.WDataMapper.TakeObject[T](EntityClass Inst, String CondSQL, Boolean isSimpleFind) in C:\Users\joshu\Downloads\DATA_ANALITIC_EXAMPLE_API\AppCore\Data_Access\BDCore\DataMapper.cs:line 466
