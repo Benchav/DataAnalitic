@@ -1,6 +1,11 @@
 # Proyecto de Analítica de Datos: Análisis de Cobertura y Distribución de Recursos en la Biblioteca Digital del MINED
 
-## 1. Contexto del Proyecto
+
+## 1. correr el proyecto
+
+dotnet run --project .\ETLService\ETLService.csproj
+
+## 1.1 Contexto del Proyecto
 
 La Biblioteca Digital del MINED constituye un repositorio educativo que reúne materiales digitales dirigidos a diferentes niveles académicos y públicos dentro del sistema educativo nicaragüense. La plataforma contiene libros, manuales, guías, cartillas y otros recursos organizados en distintas categorías educativas y temáticas.
 
