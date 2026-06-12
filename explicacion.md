@@ -1,4 +1,4 @@
-﻿# Explicación Completa del Proyecto: Analítica de Cobertura de la Biblioteca Digital del MINED
+# Explicación Completa del Proyecto: Analítica de Cobertura de la Biblioteca Digital del MINED
 
 > **Documento preparado para exposición**  
 > Proyecto de Analítica de Datos — Análisis de Cobertura y Distribución de Recursos en la Biblioteca Digital del MINED
@@ -18,6 +18,7 @@
 9. [Arquitectura Técnica del Sistema](#9-arquitectura-técnica-del-sistema)
 10. [¿Cómo correr el proyecto?](#10-cómo-correr-el-proyecto)
 11. [Conclusiones y Valor del Proyecto](#11-conclusiones-y-valor-del-proyecto)
+12. [Diagramas del Sistema](#12-diagramas-del-sistema)
 
 ---
 
@@ -303,7 +304,7 @@ Cada sección del dashboard corresponde a una **hipótesis de investigación** q
 
 ### KPI 1 — Año de Publicación por Nivel Educativo
 
-![KPI 1: Año de Publicación por Nivel Educativo — Muestra barras agrupadas por nivel (Preescolar, Primaria, Educación...) donde el eje X son los años (2015-2026) y el eje Y la cantidad de recursos. Se observa que Primaria tiene barras crecientes en años recientes.](C:/Users/joshu/.gemini/antigravity-ide/brain/bd48bb5c-84ea-4aba-98af-7962a821f94f/WhatsApp Image 2026-06-11 at 7.51.15 PM.jpeg)
+![Diagrama 2 - KPI 1: Año de Publicación por Nivel Educativo](graficos/diagrama_2.jpeg)
 
 **¿Qué muestra este gráfico?**  
 Un gráfico de barras agrupado por **nivel educativo**, donde el eje X representa los **años de publicación** (2015 a 2026) y el eje Y la **cantidad de recursos** publicados ese año.
@@ -327,7 +328,7 @@ Aunque visualmente podemos ver diferencias en los patrones de publicación entre
 
 ### KPI 2 — Espacios de Lectura por Nivel Educativo
 
-![KPI 2: Espacios de Lectura por Nivel Educativo — Gráfico de barras para nivel Preescolar mostrando la distribución de espacios de lectura (eje X: valores 15-48, eje Y: cantidad). Las barras verdes muestran una distribución variada.](C:/Users/joshu/.gemini/antigravity-ide/brain/bd48bb5c-84ea-4aba-98af-7962a821f94f/WhatsApp Image 2026-06-11 at 7.51.31 PM.jpeg)
+![Diagrama 3 - KPI 2: Espacios de Lectura por Nivel Educativo](graficos/diagrama_3.jpeg)
 
 **¿Qué muestra este gráfico?**  
 Muestra la **distribución de los espacios de lectura** para cada nivel educativo. En la captura se ve el nivel Preescolar con barras verdes. El eje X muestra los valores individuales de espacios de lectura y el eje Y la cantidad de recursos con ese valor.
@@ -349,7 +350,7 @@ Los espacios de lectura no muestran una correlación lineal significativa con el
 
 ### KPI 3 — Cobertura por Categoría Temática
 
-![KPI 3: Cobertura por Categoría Temática — Gráfico de barras mostrando la cantidad de recursos por categoría. El eje X muestra las categorías (Educación Artística, Agropecuaria, Lengua y Literatura, Orientación para la Vida, Matemáticas, Ciencias Naturales, Moral y Cívica, etc.) y todas las barras son similares en altura (~3,500).](C:/Users/joshu/.gemini/antigravity-ide/brain/bd48bb5c-84ea-4aba-98af-7962a821f94f/WhatsApp Image 2026-06-11 at 7.51.48 PM.jpeg)
+![Diagrama 4 - KPI 3: Cobertura por Categoría Temática](graficos/diagrama_4.jpeg)
 
 **¿Qué muestra este gráfico?**  
 Un gráfico de barras moradas que compara la **cantidad de recursos disponibles** en cada categoría temática: Educación Artística, Agropecuaria, Lengua y Literatura, Orientación para la Vida, Matemáticas, Ciencias Naturales, Moral y Cívica, y más.
@@ -372,7 +373,7 @@ Las barras de altura similar (~3,500 cada una) indican que los datos sintéticos
 
 ### KPI 4 — Recursos por Público Objetivo
 
-![KPI 4: Recursos por Público Objetivo — Gráfico de barras azules donde Estudiantes tiene una barra masiva (~28,000), mientras Familias y Docentes tienen barras mínimas. La diferencia es dramática.](C:/Users/joshu/.gemini/antigravity-ide/brain/bd48bb5c-84ea-4aba-98af-7962a821f94f/WhatsApp Image 2026-06-11 at 7.52.00 PM.jpeg)
+![Diagrama 5 - KPI 4: Recursos por Público Objetivo](graficos/diagrama_5.jpeg)
 
 **¿Qué muestra este gráfico?**  
 Es el gráfico más impactante visualmente. Muestra la distribución de recursos entre los tres públicos objetivo: **Estudiantes**, **Familias** y **Docentes**.
@@ -395,7 +396,7 @@ El 65% de los recursos están orientados a Estudiantes, 23% a Docentes y 12% a F
 
 ### KPI 5 — Cobertura por Asignatura
 
-![KPI 5: Cobertura por Asignatura — Gráfico de barras verdes agrupado por tipo (Principal). Muestra asignaturas como Lengua y Literatura Secundaria, Física Secundaria, Ciencias Naturales Primaria, Química Secundaria, Matemáticas Secundaria, y Lengua y Literatura Primaria, todas con valores similares (~2,500).](C:/Users/joshu/.gemini/antigravity-ide/brain/bd48bb5c-84ea-4aba-98af-7962a821f94f/WhatsApp Image 2026-06-11 at 7.52.12 PM.jpeg)
+![Diagrama 6 - KPI 5: Cobertura por Asignatura](graficos/diagrama_6.jpeg)
 
 **¿Qué muestra este gráfico?**  
 Un gráfico de barras verdes que compara la **cantidad de recursos por asignatura**, agrupadas por su tipo: **Principal** (materias troncales) y **Complementaria**.
@@ -618,3 +619,96 @@ dotnet run --project .\ETLService\ETLService.csproj
 4. **Investigar por qué Técnico tiene menos espacios de lectura** — podría indicar baja adopción digital
 5. **Usar pruebas ANOVA o Kruskal-Wallis** — complementarían los resultados de Spearman para captar mejor las diferencias entre grupos
 
+---
+
+## 12. Diagramas del Sistema
+
+En esta sección se presentan todos los diagramas del proyecto. Los diagramas 2 al 6 corresponden a los gráficos del dashboard explicados en la sección 7. A continuación se explica el diagrama del esquema lógico del sistema.
+
+---
+
+### Diagrama 1 — Esquema Lógico Dimensional (Star Schema)
+
+![Diagrama 1 - Esquema Lógico Dimensional del Sistema Analítico](graficos/diagrama_1.png)
+
+**¿Qué muestra este diagrama?**  
+Este es el **esquema lógico dimensional** (Star Schema) del sistema analítico completo. Representa la arquitectura de la base de datos analítica del proyecto de Bienestar Psicoemocional Laboral, que es el proyecto hermano del módulo de Biblioteca Digital. Ambos módulos comparten la misma arquitectura y patrón de diseño.
+
+**Estructura del diagrama:**
+
+El diagrama se divide en dos tipos de elementos:
+
+**Tablas de Dimensiones (las tablas que rodean):**
+- **dim_usuario**: Contiene datos demográficos y laborales del usuario (edad, género, cargo, contrato, antigüedad, turno, empresa, sector, departamento, jerarquías geográficas). Es la dimensión más rica del modelo.
+- **dim_tiempo**: Gestiona la dimensión temporal con componentes como fecha completa, día, mes, trimestre, semestre, año, y derivados analíticos como es_fin_semana, es_festivo, semana del año.
+- **dim_servicio**: Clasifica los servicios disponibles (test, entrenamiento, foro, llamada, chat, taller) con sus metadatos como duración estimada, modalidad (presencial/virtual/híbrido) y nivel de interacción.
+- **dim_area_psicoemocional**: Define las áreas de evaluación psicoemocional con su clasificación (Psicológico, Laboral, General), agrupación analítica y escala de medición.
+- **dim_estado_psicoemocional**: Codifica los estados posibles del bienestar usando un código de colores (Verde, Naranja, Fresa) con etiquetas, valores numéricos y flags de si requiere intervención.
+- **dim_tipo_evolucion**: Registra el tipo de evolución del usuario (Positiva, Neutra, Negativa) con su valor de impacto.
+
+**Tablas de Hechos (las tablas centrales):**
+- **fact_seguimiento_usuario**: Tabla principal de hechos. Registra cada seguimiento con estado inicial, estado final, delta de bienestar, y flags analíticos (primera evaluación, recuperación, alerta). Granularidad: 1 registro por usuario por período.
+- **fact_detalle_estado_dimension**: Detalle granular por área psicoemocional. Permite drill-down con puntajes iniciales y finales, variación, peso relativo y flags de dimensión crítica.
+- **fact_interaccion_servicio**: Registra cada uso de un servicio con métricas como duración real, frecuencia, calificación del usuario, y porcentaje de completitud.
+- **fact_absentismo**: Contiene registros de ausencias con días de ausencia, tipo, gravedad y si está relacionado con salud mental.
+- **fact_solicitud_psicologo**: Gestiona las solicitudes de apoyo psicológico con estado del proceso, sesiones consumidas/pendientes, tiempo de espera y prioridad.
+
+**Las flechas y relaciones:**
+- Cada flecha representa una **relación de llave foránea** (FK) entre una tabla de hechos y una dimensión
+- Las cardinalidades "1" a "N" indican que una dimensión puede estar asociada a múltiples registros de hechos
+- Por ejemplo: un usuario (dim_usuario) puede tener muchos seguimientos (fact_seguimiento_usuario)
+
+**¿Cómo se relaciona con nuestro módulo de Biblioteca?**
+
+El módulo de Biblioteca Digital sigue exactamente el mismo patrón de diseño pero con sus propias tablas:
+
+| Esquema General (Diagrama 1) | Módulo Biblioteca |
+|---|---|
+| dim_usuario | Dim_PublicoObjetivo (Estudiantes, Docentes, Familias) |
+| dim_tiempo | Dim_Tiempo_Biblioteca (fechas de publicación) |
+| dim_servicio | Dim_Categoria (áreas temáticas) |
+| dim_area_psicoemocional | Dim_NivelEducativo (niveles del sistema educativo) |
+| dim_estado_psicoemocional | Dim_Asignatura (materias específicas) |
+| fact_seguimiento_usuario | Fact_RecursoEducativo (recursos de la biblioteca) |
+
+La clave es que ambos módulos aplican el **mismo patrón de Data Warehouse**: una tabla de hechos central con métricas numéricas, rodeada por dimensiones descriptivas que permiten segmentar y filtrar los análisis.
+
+---
+
+### Diagrama 2 — KPI 1: Año de Publicación por Nivel Educativo
+
+![Diagrama 2 - KPI 1: Año de Publicación por Nivel Educativo](graficos/diagrama_2.jpeg)
+
+Gráfico de barras azules agrupado por nivel educativo. El eje X muestra los años de publicación (2015-2026) y el eje Y la cantidad de recursos. Se pueden observar las diferencias de distribución temporal entre Preescolar, Primaria, y los demás niveles educativos. Ver sección 7, KPI 1 para la explicación completa.
+
+---
+
+### Diagrama 3 — KPI 2: Espacios de Lectura por Nivel Educativo
+
+![Diagrama 3 - KPI 2: Espacios de Lectura por Nivel Educativo](graficos/diagrama_3.jpeg)
+
+Gráfico de barras verdes que muestra la distribución de espacios de lectura para el nivel Preescolar. El eje X indica los valores de espacios de lectura y el eje Y la cantidad de recursos con ese valor. Las barras muestran una distribución variada con picos y valles. Ver sección 7, KPI 2 para la explicación completa.
+
+---
+
+### Diagrama 4 — KPI 3: Cobertura por Categoría Temática
+
+![Diagrama 4 - KPI 3: Cobertura por Categoría Temática](graficos/diagrama_4.jpeg)
+
+Gráfico de barras moradas que compara la cantidad de recursos en cada categoría temática (Educación Artística, Agropecuaria, Lengua y Literatura, Orientación para la Vida, Matemáticas, Ciencias Naturales, etc.). Las barras son de altura similar (~3,500), indicando una distribución equilibrada. Ver sección 7, KPI 3 para la explicación completa.
+
+---
+
+### Diagrama 5 — KPI 4: Recursos por Público Objetivo
+
+![Diagrama 5 - KPI 4: Recursos por Público Objetivo](graficos/diagrama_5.jpeg)
+
+Gráfico de barras azules que es el más impactante visualmente: Estudiantes tiene una barra masiva (~28,000 recursos), mientras Familias y Docentes tienen barras mínimas. Evidencia el desequilibrio en la distribución de recursos por público. Ver sección 7, KPI 4 para la explicación completa.
+
+---
+
+### Diagrama 6 — KPI 5: Cobertura por Asignatura
+
+![Diagrama 6 - KPI 5: Cobertura por Asignatura](graficos/diagrama_6.jpeg)
+
+Gráfico de barras verdes agrupado por tipo de asignatura (Principal vs Complementaria). Muestra asignaturas como Lengua y Literatura, Física, Ciencias Naturales, Química, Matemáticas, todas con valores similares (~2,500 recursos). Ver sección 7, KPI 5 para la explicación completa.
